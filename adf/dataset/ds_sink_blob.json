@@ -2,7 +2,7 @@
 	"name": "ds_sink_blob",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "ls_sink_blob_cdc",
+			"referenceName": "ls_sink_for_incremental",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {

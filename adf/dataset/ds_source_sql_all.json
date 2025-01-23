@@ -2,7 +2,7 @@
 	"name": "ds_source_sql_all",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "ls_source_sql_cdc",
+			"referenceName": "ls_source_incremental",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
