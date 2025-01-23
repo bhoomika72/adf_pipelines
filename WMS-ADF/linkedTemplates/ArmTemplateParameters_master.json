@@ -1,0 +1,108 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "WMS-ADF"
+		},
+		"ls_cdc_generator_accessToken": {
+			"value": ""
+		},
+		"ls_cdc_otput_accessToken": {
+			"value": ""
+		},
+		"ls_for_batch_dynamic_connectionString": {
+			"value": ""
+		},
+		"ls_for_databricks_batch_accessToken": {
+			"value": ""
+		},
+		"ls_for_incremental_data_connectionString": {
+			"value": ""
+		},
+		"ls_for_lookup_incremental_password": {
+			"value": ""
+		},
+		"ls_for_lookup_newdate_password": {
+			"value": ""
+		},
+		"ls_for_lookup_olddate_password": {
+			"value": ""
+		},
+		"ls_for_sink_watermark_connectionString": {
+			"value": ""
+		},
+		"ls_sink_for_incremental_connectionString": {
+			"value": ""
+		},
+		"ls_sink_incremental_connectionString": {
+			"value": ""
+		},
+		"ls_source_incremental_password": {
+			"value": ""
+		},
+		"source_linked_for_batch_password": {
+			"value": ""
+		},
+		"ls_cdc_generator_properties_typeProperties_existingClusterId": {
+			"value": "1001-105756-jcpmmv86"
+		},
+		"ls_cdc_otput_properties_typeProperties_existingClusterId": {
+			"value": "1001-105756-jcpmmv86"
+		},
+		"ls_for_databricks_batch_properties_typeProperties_existingClusterId": {
+			"value": "1001-105756-jcpmmv86"
+		},
+		"ls_for_lookup_incremental_properties_typeProperties_server": {
+			"value": "tp-server.database.windows.net"
+		},
+		"ls_for_lookup_incremental_properties_typeProperties_database": {
+			"value": "wms_db"
+		},
+		"ls_for_lookup_incremental_properties_typeProperties_userName": {
+			"value": "tp_admin"
+		},
+		"ls_for_lookup_newdate_properties_typeProperties_server": {
+			"value": "tp-server.database.windows.net"
+		},
+		"ls_for_lookup_newdate_properties_typeProperties_database": {
+			"value": "wms_db"
+		},
+		"ls_for_lookup_newdate_properties_typeProperties_userName": {
+			"value": "tp_admin"
+		},
+		"ls_for_lookup_olddate_properties_typeProperties_server": {
+			"value": "tp-server.database.windows.net"
+		},
+		"ls_for_lookup_olddate_properties_typeProperties_database": {
+			"value": "wms_db"
+		},
+		"ls_for_lookup_olddate_properties_typeProperties_userName": {
+			"value": "tp_admin"
+		},
+		"ls_source_incremental_properties_typeProperties_server": {
+			"value": "tp-server.database.windows.net"
+		},
+		"ls_source_incremental_properties_typeProperties_database": {
+			"value": "wms_db"
+		},
+		"ls_source_incremental_properties_typeProperties_userName": {
+			"value": "tp_admin"
+		},
+		"source_linked_for_batch_properties_typeProperties_server": {
+			"value": "tp-server.database.windows.net"
+		},
+		"source_linked_for_batch_properties_typeProperties_database": {
+			"value": "wms_db"
+		},
+		"source_linked_for_batch_properties_typeProperties_userName": {
+			"value": "tp_admin"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}

@@ -1,0 +1,279 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "WMS-ADF"
+		},
+		"ls_cdc_generator_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'ls_cdc_generator'"
+		},
+		"ls_cdc_otput_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'ls_cdc_otput'"
+		},
+		"ls_for_batch_dynamic_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls_for_batch_dynamic'"
+		},
+		"ls_for_databricks_batch_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'ls_for_databricks_batch'"
+		},
+		"ls_for_incremental_data_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls_for_incremental_data'"
+		},
+		"ls_for_lookup_incremental_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ls_for_lookup_incremental'"
+		},
+		"ls_for_lookup_newdate_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ls_for_lookup_newdate'"
+		},
+		"ls_for_lookup_olddate_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ls_for_lookup_olddate'"
+		},
+		"ls_for_sink_watermark_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls_for_sink_watermark'"
+		},
+		"ls_sink_for_incremental_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls_sink_for_incremental'"
+		},
+		"ls_sink_incremental_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls_sink_incremental'"
+		},
+		"ls_source_incremental_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ls_source_incremental'"
+		},
+		"source_linked_for_batch_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'source_linked_for_batch'"
+		},
+		"ls_cdc_generator_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "1001-105756-jcpmmv86"
+		},
+		"ls_cdc_otput_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "1001-105756-jcpmmv86"
+		},
+		"ls_for_databricks_batch_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "1001-105756-jcpmmv86"
+		},
+		"ls_for_lookup_incremental_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "tp-server.database.windows.net"
+		},
+		"ls_for_lookup_incremental_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "wms_db"
+		},
+		"ls_for_lookup_incremental_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "tp_admin"
+		},
+		"ls_for_lookup_newdate_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "tp-server.database.windows.net"
+		},
+		"ls_for_lookup_newdate_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "wms_db"
+		},
+		"ls_for_lookup_newdate_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "tp_admin"
+		},
+		"ls_for_lookup_olddate_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "tp-server.database.windows.net"
+		},
+		"ls_for_lookup_olddate_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "wms_db"
+		},
+		"ls_for_lookup_olddate_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "tp_admin"
+		},
+		"ls_source_incremental_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "tp-server.database.windows.net"
+		},
+		"ls_source_incremental_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "wms_db"
+		},
+		"ls_source_incremental_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "tp_admin"
+		},
+		"source_linked_for_batch_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "tp-server.database.windows.net"
+		},
+		"source_linked_for_batch_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "wms_db"
+		},
+		"source_linked_for_batch_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "tp_admin"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "WMS-ADF_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"ls_cdc_generator_accessToken": {
+						"value": "[parameters('ls_cdc_generator_accessToken')]"
+					},
+					"ls_cdc_otput_accessToken": {
+						"value": "[parameters('ls_cdc_otput_accessToken')]"
+					},
+					"ls_for_batch_dynamic_connectionString": {
+						"value": "[parameters('ls_for_batch_dynamic_connectionString')]"
+					},
+					"ls_for_databricks_batch_accessToken": {
+						"value": "[parameters('ls_for_databricks_batch_accessToken')]"
+					},
+					"ls_for_incremental_data_connectionString": {
+						"value": "[parameters('ls_for_incremental_data_connectionString')]"
+					},
+					"ls_for_lookup_incremental_password": {
+						"value": "[parameters('ls_for_lookup_incremental_password')]"
+					},
+					"ls_for_lookup_newdate_password": {
+						"value": "[parameters('ls_for_lookup_newdate_password')]"
+					},
+					"ls_for_lookup_olddate_password": {
+						"value": "[parameters('ls_for_lookup_olddate_password')]"
+					},
+					"ls_for_sink_watermark_connectionString": {
+						"value": "[parameters('ls_for_sink_watermark_connectionString')]"
+					},
+					"ls_sink_for_incremental_connectionString": {
+						"value": "[parameters('ls_sink_for_incremental_connectionString')]"
+					},
+					"ls_sink_incremental_connectionString": {
+						"value": "[parameters('ls_sink_incremental_connectionString')]"
+					},
+					"ls_source_incremental_password": {
+						"value": "[parameters('ls_source_incremental_password')]"
+					},
+					"source_linked_for_batch_password": {
+						"value": "[parameters('source_linked_for_batch_password')]"
+					},
+					"ls_cdc_generator_properties_typeProperties_existingClusterId": {
+						"value": "[parameters('ls_cdc_generator_properties_typeProperties_existingClusterId')]"
+					},
+					"ls_cdc_otput_properties_typeProperties_existingClusterId": {
+						"value": "[parameters('ls_cdc_otput_properties_typeProperties_existingClusterId')]"
+					},
+					"ls_for_databricks_batch_properties_typeProperties_existingClusterId": {
+						"value": "[parameters('ls_for_databricks_batch_properties_typeProperties_existingClusterId')]"
+					},
+					"ls_for_lookup_incremental_properties_typeProperties_server": {
+						"value": "[parameters('ls_for_lookup_incremental_properties_typeProperties_server')]"
+					},
+					"ls_for_lookup_incremental_properties_typeProperties_database": {
+						"value": "[parameters('ls_for_lookup_incremental_properties_typeProperties_database')]"
+					},
+					"ls_for_lookup_incremental_properties_typeProperties_userName": {
+						"value": "[parameters('ls_for_lookup_incremental_properties_typeProperties_userName')]"
+					},
+					"ls_for_lookup_newdate_properties_typeProperties_server": {
+						"value": "[parameters('ls_for_lookup_newdate_properties_typeProperties_server')]"
+					},
+					"ls_for_lookup_newdate_properties_typeProperties_database": {
+						"value": "[parameters('ls_for_lookup_newdate_properties_typeProperties_database')]"
+					},
+					"ls_for_lookup_newdate_properties_typeProperties_userName": {
+						"value": "[parameters('ls_for_lookup_newdate_properties_typeProperties_userName')]"
+					},
+					"ls_for_lookup_olddate_properties_typeProperties_server": {
+						"value": "[parameters('ls_for_lookup_olddate_properties_typeProperties_server')]"
+					},
+					"ls_for_lookup_olddate_properties_typeProperties_database": {
+						"value": "[parameters('ls_for_lookup_olddate_properties_typeProperties_database')]"
+					},
+					"ls_for_lookup_olddate_properties_typeProperties_userName": {
+						"value": "[parameters('ls_for_lookup_olddate_properties_typeProperties_userName')]"
+					},
+					"ls_source_incremental_properties_typeProperties_server": {
+						"value": "[parameters('ls_source_incremental_properties_typeProperties_server')]"
+					},
+					"ls_source_incremental_properties_typeProperties_database": {
+						"value": "[parameters('ls_source_incremental_properties_typeProperties_database')]"
+					},
+					"ls_source_incremental_properties_typeProperties_userName": {
+						"value": "[parameters('ls_source_incremental_properties_typeProperties_userName')]"
+					},
+					"source_linked_for_batch_properties_typeProperties_server": {
+						"value": "[parameters('source_linked_for_batch_properties_typeProperties_server')]"
+					},
+					"source_linked_for_batch_properties_typeProperties_database": {
+						"value": "[parameters('source_linked_for_batch_properties_typeProperties_database')]"
+					},
+					"source_linked_for_batch_properties_typeProperties_userName": {
+						"value": "[parameters('source_linked_for_batch_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "WMS-ADF_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'WMS-ADF_ArmTemplate_0')]"
+			]
+		}
+	]
+}
